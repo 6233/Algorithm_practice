@@ -1,0 +1,84 @@
+#include <iostream>
+#include <cstdio>
+#include <queue>
+#include <algorithm>
+#include <string>
+using namespace std;
+
+
+class miro {
+public:
+	int x;
+	int y;
+	int count;
+	miro() {}
+	miro(int a, int b, int c)
+	{
+		x = a; y = b; count = c;
+	}
+	~miro()
+	{
+	}
+};
+
+queue<miro> q;
+bool a[102][102] = { 0 };
+bool check[102][102] = { false };
+int main()
+{
+	int result=10000;
+	int n, m;
+
+	cin >> n >> m;
+
+	for (int i = 1; i <=n; i++)
+		for (int j = 1; j<= m; j++)
+			scanf("%1d" ,&a[i][j]);
+
+	q.push(miro(1, 1, 1));
+
+	while (!q.empty())
+	{
+		if (q.front().x == n && q.front().y == m)
+		{
+			if (q.front().count < result)
+				result = q.front().count;
+
+			q.pop();
+			continue;
+		}
+
+		//down
+		if (a[q.front().x + 1][q.front().y] == 1 && check[q.front().x + 1][q.front().y] != true)
+		{
+				q.push(miro(q.front().x + 1, q.front().y, q.front().count + 1));
+				check[q.front().x + 1][q.front().y]=true;
+		}
+		//up
+		if (a[q.front().x -1][q.front().y] == 1 && check[q.front().x - 1][q.front().y] != true)
+		{
+				q.push(miro(q.front().x -1, q.front().y, q.front().count + 1));
+				check[q.front().x - 1][q.front().y] = true;
+		}
+		//right
+		if (a[q.front().x][q.front().y+1] == 1 && check[q.front().x][q.front().y + 1] != true)
+		{
+				q.push(miro(q.front().x, q.front().y+1, q.front().count + 1));
+				check[q.front().x][q.front().y + 1] = true;
+		}
+
+		//left
+		if (a[q.front().x][q.front().y-1] == 1  && check[q.front().x][q.front().y - 1]!=true)
+		{
+
+				q.push(miro(q.front().x, q.front().y-1, q.front().count + 1));
+				check[q.front().x][q.front().y - 1] = true;
+		}
+
+		
+		q.pop();
+	}
+
+
+	cout << result << '\n';
+}
