@@ -1,0 +1,60 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#define max 6
+using namespace std;
+
+int main()
+{
+	vector<int> v;
+	int n=1;
+	while ((cin >>n))
+	{
+		int a[15] = {0};
+		if (n == 0)
+			break;
+
+		for (int i = 0; i < n; i++)
+			cin >> a[i];
+
+		for (int i = 0; i <= n - 6; i++)
+		{
+			v.push_back(a[i]);
+			for (int j = i + 1; j <= n - 5; j++)
+			{
+				v.push_back(a[j]);
+				for (int k = j + 1; k <= n - 4; k++)
+				{
+					v.push_back(a[k]);
+					for (int l = k + 1; l <= n - 3; l++)
+					{
+						v.push_back(a[l]);
+						for (int m = l + 1; m <= n - 2; m++)
+						{
+							v.push_back(a[m]);
+							for (int o = m + 1; o <= n - 1; o++)
+							{
+								v.push_back(a[o]);
+
+								for (int a = 0; a < max; a++)
+								{
+									cout << v[a] << " ";
+								}
+								cout << '\n';
+								v.pop_back();
+							}
+							v.pop_back();
+						}
+						v.pop_back();
+					}
+					v.pop_back();
+				}
+				v.pop_back();
+			}
+			v.pop_back();
+		}
+		cout << '\n';
+
+	}
+
+}
