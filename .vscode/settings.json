@@ -1,6 +1,3 @@
 {
-  "python.pythonPath": "/Users/jhlee/opt/anaconda3/bin/python",
-  "files.associations": {
-    "queue": "cpp"
-  }
+  "python.pythonPath": "/Users/jhlee/opt/anaconda3/bin/python"
 }
