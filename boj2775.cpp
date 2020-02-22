@@ -10,3 +10,35 @@
 
 // 출력
 // 각각의 Test case에 대해서 해당 집에 거주민 수를 출력하라.
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+  int dp[15][15] = {0};
+
+  for (int i=1; i<=14; i++) {
+    dp[0][i] = i;
+    dp[i][1] = 1;
+  }
+  
+  for(int j=1; j <= 14; j++) {
+    for (int k=2; k <=14; k++) {
+      dp[j][k] = dp[j][k-1] + dp[j-1][k];
+    }
+  }
+
+  int t;
+  cin >> t;
+
+  while(t--) {
+    int n, k;
+    cin >> n;
+    cin >> k;
+
+    cout << dp[n][k] << '\n';
+  }
+
+  return 0;
+}
