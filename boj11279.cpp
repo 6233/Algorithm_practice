@@ -15,35 +15,29 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <cstdio>
+#include <queue>
 using namespace std;
 
 int main()
 {
-  ios_base::sync_with_stdio(false);
-  cin.tie(0);
-  vector<int> pv;
+  priority_queue<int> pq;
   int n;
   
-  cin >> n;
+  scanf("%d", &n);
 
   for (int i=0; i<n; i++) {
     int x;
-    cin >> x;
+    scanf("%d", &x);
 
     if (x > 0) {
-      int i = 0;
-      for (; i < pv.size(); i++) {
-        if (pv[i] < x) {
-          break;
-        }
-      }
-      pv.insert(pv.begin()+i, x);
+      pq.push(x);
     } else {
-      if (pv.empty()) {
-        cout << "0" << '\n'; 
+      if (pq.empty()) {
+        printf("0\n");
       } else {
-        cout << pv[0]  << '\n';
-        pv.erase(pv.begin());
+        printf("%d\n", pq.top());
+        pq.pop();
       }
     }
   }
