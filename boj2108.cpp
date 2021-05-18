@@ -65,7 +65,7 @@ int main()
   bool seconds = false;
 
   for (int i=0; i<8001; i++) {
-    if (cnt[i] > cnt[maxcnt]) {
+    if (cnt[i] >= cnt[maxcnt]) {
       maxcnt = i;
       seconds = false;
     } else if (seconds == false && cnt[i] == cnt[maxcnt]) {
