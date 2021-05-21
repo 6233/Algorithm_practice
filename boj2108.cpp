@@ -32,7 +32,7 @@ int main()
   int n;
   int a[500001] = {0};
   int cnt[8001] ={0};
-  int min=4001, max= -4001;
+  int min = 4001, max = -4001;
 
   cin >> n;
 
@@ -64,8 +64,8 @@ int main()
   int maxcnt = 0;
   bool seconds = false;
 
-  for (int i=0; i<8001; i++) {
-    if (cnt[i] >= cnt[maxcnt]) {
+  for (int i = 1; i < 8001; i++) {
+    if (cnt[i] > cnt[maxcnt]) {
       maxcnt = i;
       seconds = false;
     } else if (seconds == false && cnt[i] == cnt[maxcnt]) {
